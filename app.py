@@ -22,7 +22,7 @@ def load_data():
 
 RF_model = load_data()
 
-data = pd.read_csv('creditcard.csv')
+data = pd.read_csv('Important_Features.csv')
 
 
 def user_paramters():
