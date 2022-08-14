@@ -3,25 +3,34 @@ import pickle
 import pandas as pd
 
 
-st.set_page_config(layout="wide")
+#---------------WebApp Setup-----------------#
+
+# st.set_page_config(layout="wide")
 with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+# Set Title
 st.title("Credit Card Fraud Detection")
+st.image('fraud_detection.png')
 st.markdown('#')
 
 
-st.sidebar.markdown(f" ## :gear: Model Features")
+st.sidebar.markdown(f" ## :gear: Credit Card Features")
+st.sidebar.write("Use each sliders to adjust the credit card's features. As you adjust the sliders, the table updates accordingly.")
 st.sidebar.markdown('---')
 
 
+# Fuction for loading and caching the model
 @st.cache(allow_output_mutation=True)
 def load_data():
     model = pickle.load(open("RF_model.pkl", "rb"))
     return model
 
+#Load model
 RF_model = load_data()
 
+
+#----------------Dataset Section---------------#
 data = pd.read_csv('Important_Features.csv')
 
 
@@ -49,23 +58,27 @@ def user_paramters():
             'V2':V2,
             'V9':V9}
 
+    # Create input data
     features = pd.DataFrame(input_data, index=[0])
     
     return features
 
+# collect user inputs
 df = user_paramters()
 
 
-st.subheader('Specified Model Features')
+st.subheader('Specified Credit Card Features')
 st.write(df)
-st.markdown('---')
+st.markdown('#')
+
+# -----------------Predictions-----------------------
 
 predictions = RF_model.predict(df)
 
-st.subheader("Model's Prediction")
+st.markdown(f"### :dart:Model's Prediction:dart:")
 
 if predictions == 0:
     st.success('This transaction is valid!')
 else:
-    st.warning('This transaction is Fraudulent!')
+    st.error('This transaction is Fraudulent!')
 
