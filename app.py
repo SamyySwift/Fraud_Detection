@@ -67,7 +67,7 @@ def user_paramters():
 df = user_paramters()
 
 
-st.subheader('Specified Credit Card Features')
+st.subheader('Selected Credit Card Features')
 st.write(df)
 st.markdown('#')
 
@@ -75,7 +75,7 @@ st.markdown('#')
 
 predictions = RF_model.predict(df)
 
-st.markdown(f"### :dart:Model's Prediction:dart:")
+st.markdown(f"### Model Prediction")
 
 if predictions == 0:
     st.success('This transaction is valid!')
