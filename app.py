@@ -30,7 +30,8 @@ with col2:
 # --------------- Slider Section-----------------------------
 st.sidebar.markdown("# Select AI Model")
 model_name = st.sidebar.radio(
-    "Algorithms", ["ExtraTrees Classifier", "Support Vector Machine"]
+    "Algorithms",
+    ["ExtraTrees Classifier", "Support Vector Machine", "Logistic Regression"],
 )
 load_model_button = st.sidebar.button("Load Algorithm")
 
@@ -41,7 +42,9 @@ def load_data(name):
     if name == "ExtraTrees Classifier":
         model = pickle.load(open("ExtraTreesModel.pkl", "rb"))
     elif name == "Support Vector Machine":
-        model = pickle.load(open("svm.pkl", "rb"))
+        model = pickle.load(open("SVM.pkl", "rb"))
+    elif name == "Logistic Regression":
+        model = pickle.load(open("LR.pkl", "rb"))
 
     return model
 
