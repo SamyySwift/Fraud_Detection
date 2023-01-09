@@ -40,11 +40,11 @@ load_model_button = st.sidebar.button("Load Algorithm")
 @st.cache(allow_output_mutation=True)
 def load_data(name):
     if name == "ExtraTrees Classifier":
-        model = pickle.load(open("ExtraTreesModel.pkl", "rb"))
+        model = pickle.load(open("ET.pkl", "rb"))
     elif name == "Support Vector Machine":
-        model = pickle.load(open("Svm.pkl", "rb"))
+        model = pickle.load(open("svc.pkl", "rb"))
     elif name == "Logistic Regression":
-        model = pickle.load(open("Lr.pkl", "rb"))
+        model = pickle.load(open("Log.pkl", "rb"))
 
     return model
 
