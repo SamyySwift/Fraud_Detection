@@ -42,9 +42,9 @@ def load_data(name):
     if name == "ExtraTrees Classifier":
         model = pickle.load(open("ExtraTreesModel.pkl", "rb"))
     elif name == "Support Vector Machine":
-        model = pickle.load(open("SVM.pkl", "rb"))
+        model = pickle.load(open("Svm.pkl", "rb"))
     elif name == "Logistic Regression":
-        model = pickle.load(open("LR.pkl", "rb"))
+        model = pickle.load(open("Lr.pkl", "rb"))
 
     return model
 
